@@ -21,6 +21,9 @@ namespace AccountLookup
         public string ID { get; protected set; }
         public string AccountStatus { get; protected set; }
         public string RawResult { get; protected set; }
+        public string PasswordLastSet { get; protected set; }
+        public string PasswordExpires { get; protected set; }
+        public string PasswordChangeable { get; protected set; }
 
         public bool LookupSuccess { get; protected set; }
         public string LookupMessage { get; protected set; }
@@ -40,9 +43,10 @@ namespace AccountLookup
             FullName = resultList[1].Substring(RESULT_OFFSET).TrimEnd(' ', '\n', '\r');
             ID = resultList[2].Substring(RESULT_OFFSET).TrimEnd(' ', '\n', '\r');
             AccountStatus = resultList[5].Substring(RESULT_OFFSET).TrimEnd(' ', '\n', '\r');
-
-
-            Console.WriteLine(AccountStatus);
+            PasswordLastSet = resultList[8].Substring(RESULT_OFFSET).TrimEnd(' ', '\n', '\r');
+            PasswordExpires = resultList[9].Substring(RESULT_OFFSET).TrimEnd(' ', '\n', '\r');
+            PasswordChangeable = resultList[10].Substring(RESULT_OFFSET).TrimEnd(' ', '\n', '\r');
+            Console.WriteLine(PasswordExpires);
         }
     }
 }
